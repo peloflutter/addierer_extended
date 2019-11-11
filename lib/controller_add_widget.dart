@@ -5,7 +5,7 @@ class ControllerAddWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     debugPrint('ControllerAddWidget::build');
-    final CalculatorWidgetState state = CalculatorWidget.of(context);
+    final CalculatorWidgetState state = CalculatorWidget.of(context, false);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: RaisedButton(

@@ -14,10 +14,16 @@ class CalculatorWidget extends StatefulWidget {
 
   final Widget child;
 
-  static CalculatorWidgetState of(BuildContext context) {
-    return (context.inheritFromWidgetOfExactType(CalculatorInheritedWidget)
-            as CalculatorInheritedWidget)
-        .data;
+  static CalculatorWidgetState of(BuildContext context, bool rebuild) {
+    CalculatorWidgetState widget = (rebuild)
+        ? (context.inheritFromWidgetOfExactType(CalculatorInheritedWidget)
+                as CalculatorInheritedWidget)
+            .data
+        : (context.ancestorWidgetOfExactType(CalculatorInheritedWidget)
+                as CalculatorInheritedWidget)
+            .data;
+
+    return widget;
   }
 
   @override
@@ -47,7 +53,7 @@ class CalculatorWidgetState extends State<CalculatorWidget> {
 
   void setInput(OperandPosition position, text) {
     debugPrint('CalculatorWidgetState::setInput => $text [$position]');
-    
+
     // no setState needed !!! don't want to rebuild my widget tree
     if (position == OperandPosition.firstOperand) {
       model.firstOperand = text;

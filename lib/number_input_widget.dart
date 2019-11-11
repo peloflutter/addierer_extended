@@ -19,7 +19,7 @@ class NumberInputWidget extends StatelessWidget {
         ? '1. Operand'
         : '2. Operand';
 
-    final CalculatorWidgetState state = CalculatorWidget.of(context);
+    final CalculatorWidgetState state = CalculatorWidget.of(context, true);
 
     Key key = (state.model.operation == Operation.clear) ? UniqueKey() : null;
 
