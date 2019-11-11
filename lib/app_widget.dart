@@ -8,7 +8,8 @@ class MyApp extends StatelessWidget {
     debugPrint('MyApp::build');
     return CalculatorWidget(
       child: MaterialApp(
-        title: 'Another Very Simple Calculator',
+        title: 'Flutter Learning App',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
