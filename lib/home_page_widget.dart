@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Another Very Simple Calculator'),
+        title: Text('Adding two Numbers - Extended'),
       ),
       body: CalculatorWidget(
         child: SingleChildScrollView(
