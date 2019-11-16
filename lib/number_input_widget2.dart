@@ -4,25 +4,34 @@ import 'package:flutter/material.dart';
 
 enum OperandPosition { firstOperand, secondOperand }
 
-class NumberInputWidget extends StatelessWidget {
+class NumberInputWidget2 extends StatefulWidget {
   final OperandPosition position;
 
-  NumberInputWidget({@required this.position}) {
-    debugPrint("c'tor NumberInputWidget [${this.position}]");
+  NumberInputWidget2({@required this.position}) {
+    debugPrint("c'tor NumberInputWidget2 [${this.position}]");
   }
 
   @override
-  Widget build(BuildContext context) {
-    debugPrint('NumberInputWidgetState::build');
+  _NumberInputWidget2State createState() => _NumberInputWidget2State();
+}
 
-    String header = (position == OperandPosition.firstOperand)
+class _NumberInputWidget2State extends State<NumberInputWidget2> {
+  final controller = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    debugPrint('_NumberInputWidget2State::build');
+
+    String header = (widget.position == OperandPosition.firstOperand)
         ? '1. Operand'
         : '2. Operand';
 
     final CalculatorStateContainerState state =
         CalculatorStateContainer.of(context, true);
 
-    Key key = (state.model.operation == Operation.clear) ? UniqueKey() : this.key;
+    if (state.model.operation == Operation.clear) {
+      controller.clear();
+    }
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -38,15 +47,21 @@ class NumberInputWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 8.0),
           child: TextField(
+            controller: controller,
             style: TextStyle(fontSize: 20),
-            key: key,
             keyboardType: TextInputType.number,
             onChanged: (String text) {
-              state.setInput(position, text);
+              state.setInput(widget.position, controller.text);
             },
           ),
         ),
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 }

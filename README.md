@@ -1,4 +1,4 @@
-# Addierer zweier Zahlen / Adding two Numbers / Extended Version
+# Addierer zweier Zahlen / Adding two Numbers / Revised Version
 
 ## Erste Schritte
 
