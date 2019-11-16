@@ -1,8 +1,8 @@
-import 'package:addierer_extended/calculator_widget.dart';
+import 'package:addierer_extended/calculator_state_container.dart';
 import 'package:flutter/cupertino.dart';
 
 class CalculatorInheritedWidget extends InheritedWidget {
-  final CalculatorWidgetState data;
+  final CalculatorStateContainerState data;
 
   CalculatorInheritedWidget({
     Key key,

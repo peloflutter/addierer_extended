@@ -1,4 +1,4 @@
-import 'package:addierer_extended/calculator_widget.dart';
+import 'package:addierer_extended/calculator_state_container.dart';
 import 'package:flutter/cupertino.dart';
 
 class NumberOutputWidget extends StatelessWidget {
@@ -9,7 +9,7 @@ class NumberOutputWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     debugPrint('NumberOutputWidget::build');
-    final CalculatorWidgetState state = CalculatorWidget.of(context, true);
+    final CalculatorStateContainerState state = CalculatorStateContainer.of(context, true);
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.stretch,

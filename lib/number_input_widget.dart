@@ -1,4 +1,4 @@
-import 'package:addierer_extended/calculator_widget.dart';
+import 'package:addierer_extended/calculator_state_container.dart';
 import 'package:addierer_extended/operation_model.dart';
 import 'package:flutter/material.dart';
 
@@ -19,9 +19,10 @@ class NumberInputWidget extends StatelessWidget {
         ? '1. Operand'
         : '2. Operand';
 
-    final CalculatorWidgetState state = CalculatorWidget.of(context, true);
+    final CalculatorStateContainerState state =
+        CalculatorStateContainer.of(context, true);
 
-    Key key = (state.model.operation == Operation.clear) ? UniqueKey() : null;
+    Key key = (state.model.operation == Operation.clear) ? UniqueKey() : this.key;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,

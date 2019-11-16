@@ -4,18 +4,18 @@ import 'package:addierer_extended/operation_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class CalculatorWidget extends StatefulWidget {
-  CalculatorWidget({
+class CalculatorStateContainer extends StatefulWidget {
+  final Widget child;
+
+  CalculatorStateContainer({
     Key key,
     @required this.child,
   }) : super(key: key) {
-    debugPrint("c'tor CalculatorWidget");
+    debugPrint("c'tor CalculatorStateContainer");
   }
 
-  final Widget child;
-
-  static CalculatorWidgetState of(BuildContext context, bool rebuild) {
-    CalculatorWidgetState widget = (rebuild)
+  static CalculatorStateContainerState of(BuildContext context, bool rebuild) {
+    CalculatorStateContainerState widget = (rebuild)
         ? (context.inheritFromWidgetOfExactType(CalculatorInheritedWidget)
                 as CalculatorInheritedWidget)
             .data
@@ -27,16 +27,17 @@ class CalculatorWidget extends StatefulWidget {
   }
 
   @override
-  CalculatorWidgetState createState() => CalculatorWidgetState();
+  CalculatorStateContainerState createState() =>
+      CalculatorStateContainerState();
 }
 
-class CalculatorWidgetState extends State<CalculatorWidget> {
+class CalculatorStateContainerState extends State<CalculatorStateContainer> {
   // operation state managed by this state object
   OperationModel model;
 
   @override
   void initState() {
-    debugPrint('CalculatorWidgetState::initState');
+    debugPrint('CalculatorStateContainerState::initState');
     super.initState();
 
     model = OperationModel.zero();
@@ -44,7 +45,7 @@ class CalculatorWidgetState extends State<CalculatorWidget> {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('CalculatorWidgetState::build');
+    debugPrint('CalculatorStateContainerState::build');
     return CalculatorInheritedWidget(
       data: this,
       child: widget.child,
@@ -52,7 +53,7 @@ class CalculatorWidgetState extends State<CalculatorWidget> {
   }
 
   void setInput(OperandPosition position, text) {
-    debugPrint('CalculatorWidgetState::setInput => $text [$position]');
+    debugPrint('CalculatorStateContainerState::setInput => $text [$position]');
 
     // no setState needed !!! don't want to rebuild my widget tree
     if (position == OperandPosition.firstOperand) {
@@ -63,10 +64,11 @@ class CalculatorWidgetState extends State<CalculatorWidget> {
   }
 
   void add() {
-    debugPrint('CalculatorWidgetState::add');
+    debugPrint('CalculatorStateContainerState::add');
 
     String firstOperand = model.firstOperand;
     String secondOperand = model.secondOperand;
+    
     String result =
         (double.parse(firstOperand) + double.parse(secondOperand)).toString();
 
@@ -77,7 +79,7 @@ class CalculatorWidgetState extends State<CalculatorWidget> {
   }
 
   void clear() {
-    debugPrint('CalculatorWidgetState::clear');
+    debugPrint('CalculatorStateContainerState::clear');
 
     setState(() {
       model.operation = Operation.clear;
