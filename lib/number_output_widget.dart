@@ -9,7 +9,8 @@ class NumberOutputWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     debugPrint('NumberOutputWidget::build');
-    final CalculatorStateContainerState state = CalculatorStateContainer.of(context, true);
+    final CalculatorStateContainerState state =
+        CalculatorStateContainer.of(context, true);
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.stretch,

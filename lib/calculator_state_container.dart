@@ -1,5 +1,5 @@
 import 'package:addierer_extended/calculator_inherited_widget.dart';
-import 'package:addierer_extended/number_input_widget2.dart';
+import 'package:addierer_extended/number_input_widget.dart';
 import 'package:addierer_extended/operation_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -68,7 +68,7 @@ class CalculatorStateContainerState extends State<CalculatorStateContainer> {
 
     String firstOperand = model.firstOperand;
     String secondOperand = model.secondOperand;
-    
+
     String result =
         (double.parse(firstOperand) + double.parse(secondOperand)).toString();
 

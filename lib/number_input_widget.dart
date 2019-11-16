@@ -4,23 +4,23 @@ import 'package:flutter/material.dart';
 
 enum OperandPosition { firstOperand, secondOperand }
 
-class NumberInputWidget2 extends StatefulWidget {
+class NumberInputWidget extends StatefulWidget {
   final OperandPosition position;
 
-  NumberInputWidget2({@required this.position}) {
-    debugPrint("c'tor NumberInputWidget2 [${this.position}]");
+  NumberInputWidget({@required this.position}) {
+    debugPrint("c'tor NumberInputWidget [${this.position}]");
   }
 
   @override
-  _NumberInputWidget2State createState() => _NumberInputWidget2State();
+  _NumberInputWidgetState createState() => _NumberInputWidgetState();
 }
 
-class _NumberInputWidget2State extends State<NumberInputWidget2> {
+class _NumberInputWidgetState extends State<NumberInputWidget> {
   final controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('_NumberInputWidget2State::build');
+    debugPrint('_NumberInputWidgetState::build');
 
     String header = (widget.position == OperandPosition.firstOperand)
         ? '1. Operand'
