@@ -1,12 +1,16 @@
 # Addierer zweier Zahlen / Adding two Numbers / Revised Version
 
-## Erste Schritte
-
 Diese Flutter App dient dem primären Ziel, den Einsatz des `InheritedWidget`-Steuerelements zu erläutern.
 Funktionell ist die App identisch mit der *Adding two Numbers* App aus dem *Adder*-Repository
-([https://github.com/peloflutter/addierer]).
+([https://github.com/peloflutter/addierer]). Sie besitzt diesselbe Oberfläche wie in Abbildung 1 gezeigt:
 
-Das Konzept kann neben der offiziellen Dokumentation auch in [Widget — State — BuildContext — InheritedWidget](https://medium.com/flutter-community/widget-state-buildcontext-inheritedwidget-898d671b7956) nachgelesen werden.
+<img src="assets/simple_adder_extended.png" width="300">
+
+Abbildung 8. Oberfläche der *Adding two Numbers - Extended*-App.
+
+Das Konzept kann neben der offiziellen Dokumentation auch in [Widget — State — BuildContext — InheritedWidget](https://medium.com/flutter-community/widget-state-buildcontext-inheritedwidget-898d671b7956)
+oder in oder in [Flutter Tutorials – Inherited Widgets](http://www.coderzheaven.com/2019/01/18/flutter-tutorials-inherited-widgets/) nachgelesen werden. Wir gehen
+auf die wesentlichen Entwurfsprinzipien im Folgenden kurz ein:
 
 Um zu betrachten, wie ein Widget aus Basis mehrerer Teil-Widgets strukturiert werden kann, werfen wir am besten einen Blick auf den Quellcode der Klasse `HomePage`,
 die für den Aufbau der zentralen App-Seite zuständig ist:
@@ -134,31 +138,31 @@ Nachfolgend finden Sie eine Abfolge mehrerer Abbildungen vor, die den bislang be
 
 <img src="assets/inherited_1.png" width="600">
 
-Abbildung 1. Bestandsaufnahme eines hierarchischen Flutter Widgets Baums.
+Abbildung 2. Bestandsaufnahme eines hierarchischen Flutter Widgets Baums.
 
 <img src="assets/inherited_2.png" width="600">
 
-Abbildung 2. Ein weiteres Widget wird hinzugefügt.
+Abbildung 3. Ein weiteres Widget wird hinzugefügt.
 
 <img src="assets/inherited_3.png" width="600">
 
-Abbildung 3. Das hinzugefügte Widget möchte auf Daten weiter oben im Widgets Baum zugreifen.
+Abbildung 4. Das hinzugefügte Widget möchte auf Daten weiter oben im Widgets Baum zugreifen.
 
 <img src="assets/inherited_4.png" width="600">
 
-Abbildung 4. Ein Widget-Objekt ist - prinzipiell - nicht ohne weiteres direkt ansprechbar.
+Abbildung 5. Ein Widget-Objekt ist - prinzipiell - nicht ohne weiteres direkt ansprechbar.
 
 <img src="assets/inherited_5.png" width="600">
 
-Abbildung 5. Für den zentralen Datenzugriff ist eine `InheritedWidget`-Instanz im Widget Baum einzufügen.
+Abbildung 6. Für den zentralen Datenzugriff ist eine `InheritedWidget`-Instanz im Widget Baum einzufügen.
 
 <img src="assets/inherited_6.png" width="600">
 
-Abbildung 6. Mit `inheritFromWidgetOfExactType` (oder einer Reihe sehr ähnlicher Methoden) ist die `InheritedWidget`-Instanz erreichbar.
+Abbildung 7. Mit `inheritFromWidgetOfExactType` (oder einer Reihe sehr ähnlicher Methoden) ist die `InheritedWidget`-Instanz erreichbar.
 
 <img src="assets/inherited_7.png" width="600">
 
-Abbildung 7. Die Erreichbarkeit gilt für alle `Widget`-Instanzen unterhalb der eingefügten `InheritedWidget`-Instanz.
+Abbildung 8. Die Erreichbarkeit gilt für alle `Widget`-Instanzen unterhalb der eingefügten `InheritedWidget`-Instanz.
 
 Im Quellcode finden sich zahlreiche Aufrufe der `debugPrint`-Funktion vor. Diese dienen vor allem dem Zweck, bei einem erneuten Laden der App den Aufbau des Widget-Baums studieren zu können,
 welche Widgets neu gezeichnet werden (Aufruf der `build`-Methode) und welche nicht:
@@ -202,53 +206,3 @@ flutter: _NumberInputWidgetState::build
 ```
 
 Weitere Informationen zur Implementierung der App können Sie dem eingangs zitierten Literaturhinweis entnehmen.
-
-<img src="assets/simple_adder_extended.png" width="300">
-
-Abbildung 1. Oberfläche der *Adding two Numbers - Extended*-App.
-
-***
-
-English-Version: TBD
-
-
-
-xxxx
-
-
-Launching lib/main.dart on iPhone 8 in debug mode...
-Xcode build done.                                            9.9s
-flutter: c'tor CalculatorStateContainer
-flutter: CalculatorStateContainerState::initState
-flutter: CalculatorStateContainerState::build
-flutter: c'tor CalculatorInheritedWidget
-flutter: CalculatorApp::build
-flutter: c'tor NumberInputWidget [OperandPosition.firstOperand]
-flutter: c'tor NumberInputWidget [OperandPosition.secondOperand]
-flutter: c'tor NumberOutputWidget
-flutter: _NumberInputWidgetState::build
-flutter: _NumberInputWidgetState::build
-flutter: ControllerAddWidget::build
-flutter: NumberOutputWidget::build
-flutter: ControllerClearWidget::build
-flutter: HorizontalLineWidget::build
-
-// Erneuter Aufbau der App nach Eingabe der Operanden für eine Addition:
-flutter: CalculatorStateContainerState::setInput => 1 [OperandPosition.firstOperand]
-flutter: CalculatorStateContainerState::setInput => 2 [OperandPosition.secondOperand]
-flutter: CalculatorStateContainerState::add
-flutter: CalculatorStateContainerState::build
-flutter: c'tor CalculatorInheritedWidget
-flutter: CalculatorInheritedWidget::updateShouldNotify
-flutter: NumberOutputWidget::build
-flutter: _NumberInputWidgetState::build
-flutter: _NumberInputWidgetState::build
-
-// Erneuter Aufbau der App nach Klick auf den 'Clear'-Button:
-flutter: CalculatorStateContainerState::clear
-flutter: CalculatorStateContainerState::build
-flutter: c'tor CalculatorInheritedWidget
-flutter: CalculatorInheritedWidget::updateShouldNotify
-flutter: NumberOutputWidget::build
-flutter: _NumberInputWidgetState::build
-flutter: _NumberInputWidgetState::build
