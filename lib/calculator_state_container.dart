@@ -32,8 +32,8 @@ class CalculatorStateContainer extends StatefulWidget {
 }
 
 class CalculatorStateContainerState extends State<CalculatorStateContainer> {
-  // operation state managed by this state object
-  OperationModel model;
+
+  OperationModel model;  // data provided by this state object
 
   @override
   void initState() {
