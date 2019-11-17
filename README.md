@@ -113,8 +113,8 @@ class CalculatorStateContainerState extends State<CalculatorStateContainer> {
 }
 ```
 
-Die Klasse `CalculatorStateContainerState` besitzt eine Datenobjekt, hier: Objekt `model` vom Typ `OperationModel `. In der `build`-Methode der Klasse
-wird das `CalculatorInheritedWidget`-Objekt eingeschleust, dem im Konstruktor im Parameter `data` via `this` die `CalculatorStateContainerState`-Instanz 
+Die Klasse `CalculatorStateContainerState` besitzt eine Datenobjekt, hier: Objekt `model` vom Typ `OperationModel`. In der `build`-Methode der Klasse
+wird eine `CalculatorInheritedWidget`-Instanz eingeschleust, der im Konstruktor im Parameter `data` via `this` die `CalculatorStateContainerState`-Instanz 
 übergeben wird. Prinzipiell hätte man dem `data`-Parameter hier ein beliebiges Objekt übergeben können.
 
 Das `CalculatorStateContainerState`-Objekt kann nun von tieferliegenden Widgets mit `inheritFromWidgetOfExactType` oder `ancestorWidgetOfExactType` angesprochen werden:
@@ -134,6 +134,15 @@ static CalculatorStateContainerState of(BuildContext context, bool rebuild) {
 ```
 
 Die bislang skizzierten Code-Snippets muss man in aller Ruhe studieren, ihre tieferliegende Funktionalität erschließt sich nicht mit einem schnellen Blick.
+Der hierarchische Baum der in dieser App zum Einsatz kommenden Flutter Widgets sieht nun so aus:
+
+<img src="assets/dev_tools_screenshot.png" width="500">
+
+Abbildung 2. Hierarchischer Baum von Flutter Widgets.
+
+Erkennen Sie den Unterschied zum hierarchischen Baum aller Flutter Widgets aus dem *Adder*-Repository([https://github.com/peloflutter/addierer])?
+Es sind die obersten beiden Widgets, die im Baum dieser App ergänzend hinzugefügt wurden.
+
 Nachfolgend finden Sie eine Abfolge mehrerer Abbildungen vor, die den bislang beschrieben Sachverhalt graphisch veranschaulichen:
 
 <img src="assets/inherited_1.png" width="600">
@@ -146,7 +155,7 @@ Abbildung 3. Ein weiteres Widget wird hinzugefügt.
 
 <img src="assets/inherited_3.png" width="600">
 
-Abbildung 4. Das hinzugefügte Widget möchte auf Daten weiter oben im Widgets Baum zugreifen.
+Abbildung 4. Das hinzugefügte Widget möchte auf Daten weiter oben im hierarchischen Baum alles Widgets zugreifen.
 
 <img src="assets/inherited_4.png" width="600">
 
@@ -158,7 +167,7 @@ Abbildung 6. Für den zentralen Datenzugriff ist eine `InheritedWidget`-Instanz 
 
 <img src="assets/inherited_6.png" width="600">
 
-Abbildung 7. Mit `inheritFromWidgetOfExactType` (oder einer Reihe sehr ähnlicher Methoden) ist die `InheritedWidget`-Instanz erreichbar.
+Abbildung 7. Mit `inheritFromWidgetOfExactType` (oder einer Reihe sehr ähnlicher Methoden) ist das `InheritedWidget`-Objekt erreichbar.
 
 <img src="assets/inherited_7.png" width="600">
 
