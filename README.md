@@ -9,10 +9,10 @@ Funktionell ist die App identisch mit der *Adding two Numbers* App aus dem *Adde
 Abbildung 1. Oberfläche der *Adding two Numbers - Extended*-App.
 
 Das Konzept kann neben der offiziellen Dokumentation auch in [Widget — State — BuildContext — InheritedWidget](https://medium.com/flutter-community/widget-state-buildcontext-inheritedwidget-898d671b7956)
-oder in oder in [Flutter Tutorials – Inherited Widgets](http://www.coderzheaven.com/2019/01/18/flutter-tutorials-inherited-widgets/) nachgelesen werden. Wir gehen
+oder in [Flutter Tutorials – Inherited Widgets](http://www.coderzheaven.com/2019/01/18/flutter-tutorials-inherited-widgets/) nachgelesen werden. Wir gehen
 auf die wesentlichen Entwurfsprinzipien im Folgenden kurz ein:
 
-Um zu betrachten, wie ein Widget aus Basis mehrerer Teil-Widgets strukturiert werden kann, werfen wir am besten einen Blick auf den Quellcode der Klasse `HomePage`,
+Um zu betrachten, wie ein Widget auf Basis mehrerer Teil-Widgets strukturiert werden kann, werfen wir am besten einen Blick auf den Quellcode der Klasse `HomePage`,
 die für den Aufbau der zentralen App-Seite zuständig ist:
 
 ```
